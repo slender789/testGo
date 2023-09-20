@@ -2,7 +2,7 @@ package main
 
 import (
     "fmt"
-    functions "example-mod/functions"
+    "example-mod/functions"
 )
 
 // Define functions or variables here
