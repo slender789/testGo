@@ -3,10 +3,20 @@ package test
 import (
     "testing"
     functions"example-mod/functions"
+	"time"
+
+    zap "go.uber.org/zap"
+	zapcore "go.uber.org/zap/zapcore"
+
 )
 
 func TestAdd(t *testing.T) {
     // Test cases
+	loggerConfig := zap.NewProductionConfig()
+	loggerConfig.EncoderConfig.EncodeTime = zapcore.TimeEncoderOfLayout(time.RFC3339)
+	logger, _ := loggerConfig.Build()
+	defer logger.Sync()
+
     testCases := []struct {
         a, b     int
         expected int
